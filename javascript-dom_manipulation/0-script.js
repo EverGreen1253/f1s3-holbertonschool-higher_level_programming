@@ -1,4 +1,3 @@
-let html = document.querySelector("html");
-let header = html.querySelector("header");
+let header = document.querySelector("header");
 
 header.style.color = 'red';
