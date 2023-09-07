@@ -1,6 +1,6 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    if (!Number.isNaN(name)) {
+    if ((typeof name) !== 'string') {
       throw new TypeError('Name must be a string');
     }
     if ((typeof length) !== 'number') {
@@ -20,7 +20,7 @@ export default class HolbertonCourse {
   }
 
   set name(newName) {
-    if (!Number.isNaN(newName)) {
+    if ((typeof newName) !== 'string') {
       throw new TypeError('Name must be a string');
     }
     this._name = newName;
