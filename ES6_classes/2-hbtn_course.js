@@ -1,5 +1,12 @@
-class HolbertonCourse {
+export default class HolbertonCourse {
   constructor(name, length, students) {
+    if (!isNaN(name)) {
+      throw 'TypeError: Name must be a string';
+    }
+    if ((typeof length) != "number") {
+      throw 'TypeError: Length must be a number';
+    }
+
     this._name = name;
     this._length = length;
     this._students = students;
@@ -10,11 +17,9 @@ class HolbertonCourse {
   }
 
   set name(newName) {
-    newName = newName.toString().trim();
-    if (newName === '') {
-        throw 'The name cannot be empty';
+    if (!isNaN(newName)) {
+        throw 'TypeError: Name must be a string';
     }
-  
     this._name = newName;
   }
 
@@ -23,15 +28,14 @@ class HolbertonCourse {
   }
 
   set length(newLen) {
-    let isnum = /^\d+$/.test(newLen);
-    if (!isnum) {
-      throw 'Not a number';
+    if ((typeof newLen) != "number") {
+      throw 'TypeError: Length must be a number';
     }
     this._length = Number(newLen);
   }
 
   get students() {
-
+    return this._students;
   }
 
   set students(newStudents) {
