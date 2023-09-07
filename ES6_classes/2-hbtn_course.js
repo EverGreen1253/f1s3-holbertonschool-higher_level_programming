@@ -6,6 +6,9 @@ export default class HolbertonCourse {
     if ((typeof length) != "number") {
       throw 'TypeError: Length must be a number';
     }
+    if (!Array.isArray(students)) {
+      throw 'Not an array';
+    }
 
     this._name = name;
     this._length = length;
@@ -39,8 +42,7 @@ export default class HolbertonCourse {
   }
 
   set students(newStudents) {
-    let isArr = Array.isArray(newStudents);
-    if (!isArr) {
+    if (!Array.isArray(newStudents)) {
       throw 'Not an array';
     }
    
