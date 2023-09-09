@@ -3,8 +3,11 @@ export default function taskBlock(trueOrFalse) {
   var task2 = true;
 
   if (trueOrFalse) {
-    const task = true;
-    const task2 = false;
+    (function() {
+      var task = true;
+      var task2 = false;
+      // Here, task and task2 are different variables than the ones outside this function
+    })();
   }
 
   return [task, task2];
