@@ -6,12 +6,12 @@ export default class Airport {
     this._code = code;
   }
 
-  [util.inspect.custom](depth, options) {
+  [util.inspect.custom]() {
     return `${this.constructor.name} [${this._code}] { _name: '${this._name}', _code: '${this._code}'}`;
   }
 
   toString() {
-    let to = typeof this;
+    const to = typeof this;
     return `[${to} ${this._code}]`;
   }
 }
