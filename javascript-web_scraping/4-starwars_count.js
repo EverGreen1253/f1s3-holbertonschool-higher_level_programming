@@ -14,7 +14,7 @@ request(url, function (error, response, body) {
     for (const film of data.results) {
       if (film.characters) {
         for (const char of film.characters) {
-          if (char.indexOf(charId.toString()) != -1) {
+          if (char.indexOf(charId.toString()) !== -1) {
             count++;
           }
         }
