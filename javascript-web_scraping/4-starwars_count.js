@@ -12,8 +12,12 @@ request(url, function (error, response, body) {
 
     const data = JSON.parse(body);
     for (const film of data.results) {
-      if (film.characters.includes('https://swapi-api.hbtn.io/api/people/' + charId + '/')) {
-        count++;
+      if (film.characters) {
+        for (const char of film.characters) {
+          if (char.indexOf(charId.toString()) != -1) {
+            count++;
+          }
+        }
       }
     }
 
