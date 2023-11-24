@@ -20,6 +20,7 @@ user = requests.get(url=user_api_url, timeout=10)
 employee = user.json()
 
 name = employee["name"]
+username = employee["username"]
 
 all_tasks = []
 tasks_list = []
@@ -40,7 +41,7 @@ for task in tasks_list:
 
 to_save = ""
 for item in all_tasks:
-    to_save = (to_save + "\"" + user_id + "\",\"" + name + "\",\"" +
+    to_save = (to_save + "\"" + user_id + "\",\"" + username + "\",\"" +
                str(item['completed']) + "\",\"" + item['title'] + "\"\n")
 
 file_name = user_id + ".csv"
