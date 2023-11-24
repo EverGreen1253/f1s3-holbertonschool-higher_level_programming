@@ -33,4 +33,4 @@ for item in todos.json():
 print("Employee " + name +
       " is done with tasks(" + str(completed) + "/" + str(count) + "):")
 for task in tasks_list:
-    print("    " + task)
+    print("     " + task)
