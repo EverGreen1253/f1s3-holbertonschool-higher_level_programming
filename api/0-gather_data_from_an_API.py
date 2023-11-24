@@ -8,9 +8,10 @@ if len(sys.argv) == 1:
     sys.exit()
 
 user_id = path = sys.argv[1]
+url = "https://jsonplaceholder.typicode.com/users/"
 
-user_api_url = "https://jsonplaceholder.typicode.com/users/" + user_id
-todos_api_url = "https://jsonplaceholder.typicode.com/users/" + user_id + "/todos"
+user_api_url = url + user_id
+todos_api_url = url + user_id + "/todos"
 
 todos = requests.get(url=todos_api_url, timeout=10)
 # print(todos.json())
@@ -27,8 +28,9 @@ for item in todos.json():
     if item['completed']:
         tasks_list.append(item["title"])
         completed = completed + 1
-    count  = count + 1
+    count = count + 1
 
-print("Employee " + name + " is done with tasks(" + str(completed) + "/" + str(count) + "):")
+print("Employee " + name +
+      " is done with tasks(" + str(completed) + "/" + str(count) + "):")
 for task in tasks_list:
     print("    " + task)
