@@ -40,7 +40,7 @@ for task in tasks_list:
 
 to_save = ""
 for item in all_tasks:
-    to_save = (to_save + "\"" + user_id + "\",\"" + name + "\",\"" + 
+    to_save = (to_save + "\"" + user_id + "\",\"" + name + "\",\"" +
                str(item['completed']) + "\",\"" + item['title'] + "\"\n")
 
 file_name = user_id + ".csv"
