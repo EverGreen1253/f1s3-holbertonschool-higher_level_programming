@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Nameless module for PYthon Asyn Task 0"""
+"""Nameless module for Python Async Task 0"""
 from random import random
 import asyncio
 
