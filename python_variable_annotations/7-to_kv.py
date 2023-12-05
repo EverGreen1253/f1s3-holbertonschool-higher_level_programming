@@ -5,6 +5,6 @@ from typing import List, Union, Tuple
 
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
     """Output is stuffed into a list"""
-    output = (k, v)
+    output = (k, v * v)
 
     return output
