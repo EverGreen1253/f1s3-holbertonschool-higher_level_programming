@@ -6,8 +6,8 @@ from typing import Generator, AsyncGenerator
 
 
 async def async_generator() -> Generator[float, None, None]:
-    """Waits for random amount of time up to specified maximum"""
+    """Generator that sleeps 10 times then returns random float"""
 
     for i in range(10):
-        await asyncio.sleep(1)
         yield random() * 10
+        await asyncio.sleep(1)
