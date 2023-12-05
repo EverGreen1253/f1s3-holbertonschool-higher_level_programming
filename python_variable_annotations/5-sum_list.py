@@ -5,7 +5,7 @@ from typing import List
 
 def sum_list(input_list: List[float]) -> float:
     """Python list elem summing function with annotations"""
-    total :float = 0.0
+    total: float = 0.0
 
     for i in input_list:
         total = total + i
