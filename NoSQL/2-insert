@@ -1,0 +1,3 @@
+// my comment
+
+db.myNewCollection1.insertOne( { name: "Holberton school" } )
