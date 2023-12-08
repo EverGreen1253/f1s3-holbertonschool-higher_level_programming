@@ -54,7 +54,7 @@ class Server:
             rows = list(reader)
 
             for i in range(end - start):
-                wanted_index = start + i + 1
+                wanted_index = start + i
                 if wanted_index > len(rows):
                     data = []
                     break
@@ -81,15 +81,10 @@ class Server:
         if prev_pg <= 0:
             prev_pg = None
 
-        specified_page = page
-        if page > total_pages:
-            specified_page = total_pages - 1
-        page_data = self.get_page(specified_page, page_size)
-
         output = {
             'page_size': page_size,
             'page': page,
-            'data': page_data,
+            'data': self.get_page(page, page_size),
             'next_page': next_pg,
             'prev_page': prev_pg,
             'total_pages': total_pages
