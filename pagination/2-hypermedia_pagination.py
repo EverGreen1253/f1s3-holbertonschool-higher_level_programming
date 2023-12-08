@@ -81,13 +81,15 @@ class Server:
         if prev_pg <= 0:
             prev_pg = None
 
+        specified_page = page
         if page > total_pages:
-            page = total_pages - 1
+            specified_page = total_pages - 1
+        page_data = self.get_page(specified_page, page_size)
 
         output = {
             'page_size': page_size,
             'page': page,
-            'data': self.get_page(page, page_size),
+            'data': page_data,
             'next_page': next_pg,
             'prev_page': prev_pg,
             'total_pages': total_pages
