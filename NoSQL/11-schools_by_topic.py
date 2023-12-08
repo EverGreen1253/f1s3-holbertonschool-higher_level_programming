@@ -9,7 +9,7 @@ def schools_by_topic(mongo_collection, topic):
     output = []
     for v in mongo_collection.find():
         if 'topics' in v:
-            if 'Python' in v['topics']:
+            if topic in v['topics']:
                 output.append(v)
 
     return output
