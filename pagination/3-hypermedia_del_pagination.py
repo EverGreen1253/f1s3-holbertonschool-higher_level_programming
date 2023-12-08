@@ -8,12 +8,6 @@ import math
 from typing import List, Tuple, Dict
 
 
-def index_range(start: int, page_size: int) -> Tuple[int, int]:
-    """Returns index range in a tuple"""
-
-    return (start, start + page_size)
-
-
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -45,44 +39,24 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """Get data from csv"""
-
-        assert (type(page) == int and page > 0)
-        assert (type(page_size) == int and page_size > 0)
-
-        data = []
-
-        indices = index_range(page, page_size)
-
-        # print(indices[0])
-        # print(indices[1])
-
-        start = indices[0]
-        end = indices[1]
-
-        with open(self.DATA_FILE) as f:
-            reader = csv.reader(f)
-            rows = list(reader)
-
-            for i in range(end - start):
-                wanted_index = start + i + 1
-                if wanted_index >= len(rows):
-                    data = []
-                    break
-
-                data.append(rows[wanted_index])
-
-        return data
-
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """Returns metadata for hyperlink"""
 
-        assert (type(index) == int and index >= 0)
+        rows = self.indexed_dataset()
 
-        index = index * page_size
+        assert (type(index) == int and index >= 0 and index < len(rows))
+
         next_index = index + page_size
-        data = self.get_page(index, page_size)
+
+        data = []
+        i = 0
+        while len(data) < page_size:
+            wanted_index = index + i
+
+            if wanted_index in rows:
+                data.append(rows[wanted_index])
+
+            i = i + 1
 
         output = {
             'index': index,
