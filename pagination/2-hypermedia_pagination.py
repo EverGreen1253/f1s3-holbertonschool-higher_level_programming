@@ -54,8 +54,8 @@ class Server:
             rows = list(reader)
 
             for i in range(end - start):
-                wanted_index = start + i
-                if wanted_index > len(rows):
+                wanted_index = start + i + 1
+                if wanted_index >= len(rows):
                     data = []
                     break
 
