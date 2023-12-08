@@ -82,7 +82,7 @@ class Server:
             prev_pg = None
 
         if page > total_pages:
-            page = total_pages
+            page = total_pages - 1
 
         output = {
             'page_size': page_size,
