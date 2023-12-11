@@ -1,10 +1,13 @@
-export default function handleResponseFromAPI(promise) {
-  console.log('Got a response from the API');
+import { ResponseAsJSON } from "request";
 
+export default function handleResponseFromAPI(promise) {
   return promise
-    .then(() => ({
+    .then(() => ResponseAsJSON({
       status: 200,
       body: 'Success',
     }))
-    .catch(() => Error());
+    .catch(() => Error())
+    .finally(() => {
+      console.log('Got a response from the API');
+    });
 }
