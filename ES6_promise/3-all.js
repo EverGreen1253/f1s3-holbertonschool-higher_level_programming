@@ -1,4 +1,4 @@
-import { uploadPhoto, createUser } from "./utils";
+import { uploadPhoto, createUser } from './utils';
 
 export default function handleProfileSignup() {
   const user = createUser();
@@ -12,7 +12,7 @@ export default function handleProfileSignup() {
       return user;
     })
     .then((user) => {
-      output += ' ' + user.firstName + ' ' + user.lastName;
+      output += ` ${user.firstName} ${user.lastName}`;
       console.log(output);
     })
     .catch(() => {
