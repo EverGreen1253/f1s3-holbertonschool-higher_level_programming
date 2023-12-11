@@ -8,17 +8,12 @@ export default function handleProfileSignup() {
 
   photo
     .then((photoData) => {
-      output += photoData.body + ' ';
-      user
-        .then((userData) => {
-          output += userData.firstName + ' ' + userData.lastName;
-        })
-        .catch(() => {
-          console.error('Signup system offline');
-        })
-        .finally(() => {
-          console.log(output);
-        });
+      output += photoData.body;
+      return user;
+    })
+    .then((user) => {
+      output += ' ' + user.firstName + ' ' + user.lastName;
+      console.log(output);
     })
     .catch(() => {
       console.error('Signup system offline');
