@@ -6,7 +6,7 @@ export default function handleProfileSignup() {
 
   let output = '';
 
-  photo
+  return photo
     .then((photoData) => {
       output += photoData.body;
       return user;
