@@ -9,7 +9,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     .then((value) => {
       console.log([
         {
-          status: 'resolved',
+          status: 'fulfilled',
           value,
         },
       ]);
