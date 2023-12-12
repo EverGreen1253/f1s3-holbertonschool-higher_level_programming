@@ -5,21 +5,23 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   const user = signUpUser(firstName, lastName);
   const photo = uploadPhoto(fileName);
 
-  return Promise.race([user, photo])
+  let output = [];
+
+  return user
     .then((value) => {
-      console.log([
-        {
-          status: 'fulfilled',
-          value,
-        },
-      ]);
+      output[0] = {
+        status: 'fulfilled',
+        value,
+      };
+
+      return photo;
     })
     .catch((e) => {
-      console.log([
-        {
-          status: 'rejected',
-          e,
-        },
-      ]);
+      output[1] = {
+        status: 'rejected',
+        value: e.message,
+      };
+
+      return output;
     });
 }
