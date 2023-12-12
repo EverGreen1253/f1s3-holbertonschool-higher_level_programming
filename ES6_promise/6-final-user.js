@@ -5,23 +5,23 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   const user = signUpUser(firstName, lastName);
   const photo = uploadPhoto(fileName);
 
-  let output = [];
+  const output = [];
 
   return user
     .then((value) => {
-      output[0] = {
+      output.push({
         status: 'fulfilled',
         value,
-      };
+      });
 
       return photo;
     })
     .catch((e) => {
-      output[1] = {
+      output.push({
         status: 'rejected',
         value: e.message,
-      };
-
+      });
+    }).finally(() => {
       return output;
     });
 }
