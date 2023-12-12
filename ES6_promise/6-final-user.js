@@ -14,5 +14,5 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
       value: e.message,
     }));
 
-  return Promise.all([user, photo]);
+  return Promise.resolve([user, photo]);
 }
