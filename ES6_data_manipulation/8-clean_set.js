@@ -1,18 +1,16 @@
 export default function cleanSet(set, startString) {
-  let result = '';
-
   if (startString.length === 0) {
     return '';
   }
 
-  [...set].map((term) => {
+  const result = [];
+  for (const term of [...set]) {
     const pos = term.indexOf(startString);
 
     if (pos === 0) {
-      // console.log(term.slice(startString.length));
-      result += term.slice(startString.length) + '-';
+      result.push(term.slice(startString.length));
     }
-  });
+  }
 
-  return result.slice(0, -1);
+  return result.join('-');
 }
