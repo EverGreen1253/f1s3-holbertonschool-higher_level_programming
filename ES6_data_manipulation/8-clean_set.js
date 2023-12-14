@@ -1,14 +1,16 @@
 export default function cleanSet(set, startString) {
-  if (startString.length === 0) {
+  if (startString && startString.length === 0) {
     return '';
   }
 
   const result = [];
   for (const term of [...set]) {
-    const pos = term.indexOf(startString);
+    if (term) {
+      const pos = term.indexOf(startString);
 
-    if (pos === 0) {
-      result.push(term.slice(startString.length));
+      if (pos === 0) {
+        result.push(term.slice(startString.length));
+      }
     }
   }
 
