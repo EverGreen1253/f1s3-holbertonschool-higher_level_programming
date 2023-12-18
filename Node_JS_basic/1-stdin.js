@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 
 function ask(question) {
   rl.question(question, (answer) => {
-    rl.write(`Your name is:  ${answer}\n`);
+    console.log(`Your name is:  ${answer}\n`);
     console.log('This important software is now closing');
     exit();
   });
