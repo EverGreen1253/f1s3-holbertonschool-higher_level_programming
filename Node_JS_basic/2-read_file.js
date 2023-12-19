@@ -63,10 +63,31 @@ module.exports = function countStudents(filename) {
 
     const countStudents = countCS + countSWE;
 
+    const data = fs.readFileSync(filename, 'utf-8');
+    const rows = data.split('\n');
+    let rowCount = 0;
+    const sweNames = [];
+    const csNames = [];
+
+    for (const row of rows) {
+      rowCount += 1;
+
+      if (row.substring(row.length - 3) === 'SWE') {
+        sweNames.push(row.split(',')[0]);
+      }
+      if (row.substring(row.length - 2) === 'CS') {
+        csNames.push(row.split(',')[0]);
+      }
+    }
+
+    console.log((`Number of students: ${rowCount - 1}`) === (`Number of students: ${countStudents}`));
+    console.log((`Number of students in CS: ${csNames.length}. List: ${csNames.join(', ')}`) === (`Number of students in CS: ${countCS}. List: ${studentsCS.toString().split(',').join(', ')}`));
+    console.log((`Number of students in SWE: ${sweNames.length}. List: ${sweNames.join(', ')}`) === (`Number of students in SWE: ${countSWE}. List: ${studentsSWE.toString().split(',').join(', ')}`));
+
     // print statements
-    console.log(`Number of students: ${countStudents}`);
-    console.log(`Number of students in CS: ${countCS}. List: ${studentsCS.toString().split(',').join(', ')}`);
-    console.log(`Number of students in SWE: ${countSWE}. List: ${studentsSWE.toString().split(',').join(', ')}`);
+    // console.log(`Number of students: ${countStudents}`);
+    // console.log(`Number of students in CS: ${countCS}. List: ${studentsCS.toString().split(',').join(', ')}`);
+    // console.log(`Number of students in SWE: ${countSWE}. List: ${studentsSWE.toString().split(',').join(', ')}`);
   } catch (err) {
     throw new Error('Cannot load the database');
   }
