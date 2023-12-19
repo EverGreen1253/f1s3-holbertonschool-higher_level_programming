@@ -81,8 +81,8 @@ module.exports = function countStudents(filename) {
     }
 
     console.log(`Number of students: ${rowCount - 1}`);
-    console.log(`Number of students in CS: ${csNames.length}. List: ${csNames.join(', ').trim()}`);
-    console.log(`Number of students in SWE: ${sweNames.length}. List: ${sweNames.join(', ').trim()}`);
+    console.log(`Number of students in CS: ${csNames.length}. List: ${csNames.toString().split(',').join(', ').trim()}`);
+    console.log(`Number of students in SWE: ${sweNames.length}. List: ${sweNames.toString().split(',').join(', ').trim()}`);
 
     // print statements
     // console.log(`Number of students: ${countStudents}`);
