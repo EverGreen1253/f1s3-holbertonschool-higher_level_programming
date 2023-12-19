@@ -80,9 +80,9 @@ module.exports = function countStudents(filename) {
       }
     }
 
-    console.log((`Number of students: ${rowCount - 1}`) === (`Number of students: ${countStudents}`));
-    console.log((`Number of students in CS: ${csNames.length}. List: ${csNames.join(', ')}`) === (`Number of students in CS: ${countCS}. List: ${studentsCS.toString().split(',').join(', ')}`));
-    console.log((`Number of students in SWE: ${sweNames.length}. List: ${sweNames.join(', ')}`) === (`Number of students in SWE: ${countSWE}. List: ${studentsSWE.toString().split(',').join(', ')}`));
+    console.log(`Number of students: ${rowCount - 1}`);
+    console.log(`Number of students in CS: ${csNames.length}. List: ${csNames.join(', ')}`);
+    console.log(`Number of students in SWE: ${sweNames.length}. List: ${sweNames.join(', ')}`);
 
     // print statements
     // console.log(`Number of students: ${countStudents}`);
