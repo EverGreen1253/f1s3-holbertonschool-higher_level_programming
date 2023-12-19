@@ -1,13 +1,13 @@
-module.exports = function countStudents(filename) {
-  const fs = require('fs');
+const fs = require('fs');
 
+module.exports = function countStudents(filename) {
   try {
     const data = fs.readFileSync(filename, 'utf-8');
     // const jsonData = JSON.parse(data);
     const rows = data.split('\n');
     let rowCount = 0;
-    let sweNames = [];
-    let csNames = [];
+    const sweNames = [];
+    const csNames = [];
 
     for (const row of rows) {
       rowCount += 1;
