@@ -3,7 +3,6 @@ const fs = require('fs');
 module.exports = function countStudents(filename) {
   try {
     const data = fs.readFileSync(filename, 'utf-8');
-    // const jsonData = JSON.parse(data);
     const rows = data.split('\n');
     let rowCount = 0;
     const sweNames = [];
@@ -24,6 +23,6 @@ module.exports = function countStudents(filename) {
     console.log(`Number of students in CS: ${csNames.length}. List: ${csNames.join(', ')}`);
     console.log(`Number of students in SWE: ${sweNames.length}. List: ${sweNames.join(', ')}`);
   } catch (error) {
-    console.error('Cannot load the database');
+    console.log('Cannot load the database');
   }
 };
