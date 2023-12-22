@@ -23,8 +23,9 @@ module.exports = function countStudents(filename) {
     // console.log(`Number of students in CS: ${csNames.length}. List: ${csNames.join(', ')}`);
     // console.log(`Number of students in SWE: ${sweNames.length}. List: ${sweNames.join(', ')}`);
 
+    // ----- Old code that doesn't pass checker ends here ----
+
     const data = fs.readFileSync(filename, 'utf-8');
-    // const headers = data.split('\n', 1)[0].split(',');
     const noHeaderArray = data.split('\n').slice(1);
 
     const studentsCS = [];
@@ -42,11 +43,9 @@ module.exports = function countStudents(filename) {
       }
     }
 
-    // print statements
     console.log(`Number of students: ${studentsCS.length + studentsSWE.length}`);
     console.log(`Number of students in CS: ${studentsCS.length}. List: ${studentsCS.join(', ')}`);
     console.log(`Number of students in SWE: ${studentsSWE.length}. List: ${studentsSWE.join(', ')}`);
-
   } catch (error) {
     throw new Error('Cannot load the database');
   }
