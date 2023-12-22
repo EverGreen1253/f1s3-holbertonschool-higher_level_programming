@@ -30,30 +30,40 @@ module.exports = function countStudents(filename) {
     // strip headers and convert to list of dicts
     const dictList = [];
 
+    let countCS = 0;
+    let countSWE = 0;
+    const studentsCS = [];
+    const studentsSWE = [];
+
     for (const row of noHeaderArray) {
       const data = row.split(',');
-      let item = {
+
+      if (data[3] === 'CS') {
+        countCS += 1;
+        studentsCS.push(data[0]);
+      }
+
+      if (data[3] === 'SWE') {
+        countSWE += 1;
+        studentsSWE.push(data[0]);
+      }
+
+      const item = {
         firstname: data[0], // hardcode
         field: data[3], // hardcode
       };
       dictList.push(item);
     }
 
-    // count and collect first names of students per field
-    let countCS = 0;
-    let countSWE = 0;
-    const studentsCS = [];
-    const studentsSWE = [];
-
-    dictList.forEach((element) => {
-      if (element.field === 'CS') {
-        countCS += 1;
-        studentsCS.push(element.firstname);
-      } else if (element.field === 'SWE') {
-        countSWE += 1;
-        studentsSWE.push(element.firstname);
-      }
-    });
+    // dictList.forEach((element) => {
+    //   if (element.field === 'CS') {
+    //     countCS += 1;
+    //     studentsCS.push(element.firstname);
+    //   } else if (element.field === 'SWE') {
+    //     countSWE += 1;
+    //     studentsSWE.push(element.firstname);
+    //   }
+    // });
 
     const countStudents = countCS + countSWE;
 
