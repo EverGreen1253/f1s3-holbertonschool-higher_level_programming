@@ -32,25 +32,12 @@ module.exports = function countStudents(filename) {
 
     for (const row of noHeaderArray) {
       const data = row.split(',');
-      if (data.length === headers.length) {
-        let item = {
-          firstname: data[0],
-          field: data[3],
-        };
-        dictList.push(item);
-      }
+      let item = {
+        firstname: data[0], // hardcode
+        field: data[3], // hardcode
+      };
+      dictList.push(item);
     }
-
-    // for (let i = 0; i < noHeaderArray.length; i += 1) {
-    //   const data = noHeaderArray[i].split(',');
-    //   if (data.length === headers.length) {
-    //     const row = {};
-    //     for (let j = 0; j < headers.length; j += 1) {
-    //       row[headers[j].trim()] = data[j].trim();
-    //     }
-    //     dictList.push(row);
-    //   }
-    // }
 
     // count and collect first names of students per field
     let countCS = 0;
