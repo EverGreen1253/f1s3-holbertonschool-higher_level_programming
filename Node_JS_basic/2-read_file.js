@@ -27,8 +27,6 @@ module.exports = function countStudents(filename) {
     // const headers = data.split('\n', 1)[0].split(',');
     const noHeaderArray = data.split('\n').slice(1);
 
-    let countCS = 0;
-    let countSWE = 0;
     const studentsCS = [];
     const studentsSWE = [];
 
@@ -36,22 +34,18 @@ module.exports = function countStudents(filename) {
       const data = row.split(',');
 
       if (data[3] === 'CS') { // hardcode
-        countCS += 1;
         studentsCS.push(data[0]);
       }
 
       if (data[3] === 'SWE') { // hardcode
-        countSWE += 1;
         studentsSWE.push(data[0]);
       }
     }
 
-    const countStudents = countCS + countSWE;
-
     // print statements
-    console.log(`Number of students: ${countStudents}`);
-    console.log(`Number of students in CS: ${studentsCS.length}. List: ${studentsCS.toString().split(',').join(', ')}`);
-    console.log(`Number of students in SWE: ${studentsSWE.length}. List: ${studentsSWE.toString().split(',').join(', ')}`);
+    console.log(`Number of students: ${studentsCS.length + studentsSWE.length}`);
+    console.log(`Number of students in CS: ${studentsCS.length}. List: ${studentsCS.join(', ')}`);
+    console.log(`Number of students in SWE: ${studentsSWE.length}. List: ${studentsSWE.join(', ')}`);
 
   } catch (error) {
     throw new Error('Cannot load the database');
