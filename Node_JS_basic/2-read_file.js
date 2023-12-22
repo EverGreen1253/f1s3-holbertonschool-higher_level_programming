@@ -26,12 +26,12 @@ module.exports = function countStudents(filename) {
     // ----- Old code that doesn't pass checker ends here ----
 
     const data = fs.readFileSync(filename, 'utf-8');
-    const noHeaderArray = data.split('\n').slice(1);
+    const rows = data.split('\n').slice(1);
 
     const studentsCS = [];
     const studentsSWE = [];
 
-    for (const row of noHeaderArray) {
+    for (const row of rows) {
       const data = row.split(',');
 
       if (data[3] === 'CS') { // hardcode
