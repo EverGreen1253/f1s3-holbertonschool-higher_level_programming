@@ -27,23 +27,30 @@ module.exports = function countStudents(filename) {
     const headers = data.split('\n', 1)[0].split(',');
     const noHeaderArray = data.split('\n').slice(1);
 
-    // const csv = fs.readFileSync(filename, { encoding: 'utf8' });
-    // const headerArray = csv.split(/\r?\n|\n/);
-    // const headers = headerArray[0].split(',');
-
     // strip headers and convert to list of dicts
     const dictList = [];
-    // const noHeaderArray = headerArray.slice(1);
-    for (let i = 0; i < noHeaderArray.length; i += 1) {
-      const data = noHeaderArray[i].split(',');
+
+    for (const row of noHeaderArray) {
+      const data = row.split(',');
       if (data.length === headers.length) {
-        const row = {};
-        for (let j = 0; j < headers.length; j += 1) {
-          row[headers[j].trim()] = data[j].trim();
-        }
-        dictList.push(row);
+        let item = {
+          firstname: data[0],
+          field: data[3],
+        };
+        dictList.push(item);
       }
     }
+
+    // for (let i = 0; i < noHeaderArray.length; i += 1) {
+    //   const data = noHeaderArray[i].split(',');
+    //   if (data.length === headers.length) {
+    //     const row = {};
+    //     for (let j = 0; j < headers.length; j += 1) {
+    //       row[headers[j].trim()] = data[j].trim();
+    //     }
+    //     dictList.push(row);
+    //   }
+    // }
 
     // count and collect first names of students per field
     let countCS = 0;
