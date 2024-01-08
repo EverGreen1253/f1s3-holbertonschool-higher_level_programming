@@ -13,11 +13,9 @@ async function requestListener(req, res) {
     case '/students':
       res.writeHead(200);
 
-      if (!filename) {
-        res.end('Cannot load the database\n');
-      }
-
       try {
+        res.write('This is the list of our students\n');
+
         const data = await fs.readFileSync(filename, 'utf-8');
         const rows = data.split('\n').slice(1);
 
@@ -38,12 +36,11 @@ async function requestListener(req, res) {
           }
         }
 
-        res.write('This is the list of our students\n');
         res.write(`Number of students: ${studentsCS.length + studentsSWE.length}\n`);
         res.write(`Number of students in CS: ${studentsCS.length}. List: ${studentsCS.join(', ')}\n`);
         res.end(`Number of students in SWE: ${studentsSWE.length}. List: ${studentsSWE.join(', ')}`);
       } catch (error) {
-        throw new Error('Cannot load the database\n');
+        res.end('Cannot load the database');
       }
 
       break;
