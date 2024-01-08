@@ -6,8 +6,6 @@ const port = 1245;
 
 const filename = process.argv[2];
 
-console.log(filename);
-
 async function requestListener(req, res) {
   switch (req.url) {
     case '/students':
