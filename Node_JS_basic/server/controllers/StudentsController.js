@@ -1,10 +1,10 @@
 import readDatabase from '../utils';
 
 // const filename = './database.csv';
-// const filename = process.argv[2];
+const filename = process.argv[2];
 
 export default class StudentsController {
-  static getAllStudents(request, response, filename) {
+  static getAllStudents(request, response) {
     readDatabase(filename)
       .then((studentsData) => {
         // console.log(studentsData);
@@ -19,7 +19,7 @@ export default class StudentsController {
       });
   }
 
-  static getAllStudentsByMajor(request, response, filename) {
+  static getAllStudentsByMajor(request, response) {
     readDatabase(filename)
       .then((studentsData) => {
         // console.log(studentsData);
