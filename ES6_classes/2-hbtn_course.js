@@ -10,9 +10,10 @@ export default class HolbertonCourse {
       throw new TypeError('Not an array');
     }
 
-    this._name = name;
-    this._length = length;
-    this._students = students;
+    // Use the setters instead of assigning directly to the priv vars
+    this.name = name;
+    this.length = length;
+    this.students = students;
   }
 
   get name() {
