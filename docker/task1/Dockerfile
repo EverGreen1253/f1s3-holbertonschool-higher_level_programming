@@ -5,7 +5,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y python3 && \
     apt-get install -y python3-dev && \
-    apt-get install -y pip
+    apt-get install -y python3-pip
 
 RUN pip install --break-system-packages flask
 
