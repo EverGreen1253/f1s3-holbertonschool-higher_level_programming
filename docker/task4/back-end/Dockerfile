@@ -10,7 +10,7 @@ RUN apt-get update && \
 RUN pip install --break-system-packages flask && \
     pip install --break-system-packages flask-cors
 
-RUN mkdir /app
+RUN mkdir -p /app
 
 COPY api.py /app/
 

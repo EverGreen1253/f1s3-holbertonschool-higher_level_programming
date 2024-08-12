@@ -9,7 +9,7 @@ RUN apt-get update && \
 
 RUN pip install --break-system-packages flask
 
-RUN mkdir /app
+RUN mkdir -p /app
 
 COPY api.py /app/
 
