@@ -6,7 +6,7 @@ services:
     build:
       context: ./back-end
       dockerfile: Dockerfile
-    container_name: "docker_task5_back-end"
+    container_name: "docker-task5-back-end"
     restart: always
     networks:
       - private
@@ -17,7 +17,7 @@ services:
     build:
       context: ./front-end
       dockerfile: Dockerfile
-    container_name: "docker_task5_front-end"
+    container_name: "docker-task5-front-end"
     restart: always
     networks:
       - private
@@ -30,7 +30,7 @@ services:
     build:
       context: ./proxy
       dockerfile: Dockerfile
-    container_name: "docker_task5_proxy"
+    container_name: "docker-task5-proxy"
     restart: always
     ports:
       - "80:80"
