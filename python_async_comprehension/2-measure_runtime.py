@@ -12,12 +12,10 @@ async def measure_runtime() -> float:
 
     start_time = time.time()
 
-    await gather(
-        async_comprehension(),
-        async_comprehension(),
-        async_comprehension(),
-        async_comprehension()
-    )
+    await gather(async_comprehension(),
+                 async_comprehension(),
+                 async_comprehension(),
+                 async_comprehension())
 
     end_time = time.time()
     elapsed_time = end_time - start_time
