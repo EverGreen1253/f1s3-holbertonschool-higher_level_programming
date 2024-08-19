@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Nameless module for Python Async Comp Task 2"""
-import asyncio
+from asyncio import gather
 import time
 from typing import List
 
@@ -12,7 +12,7 @@ async def measure_runtime() -> float:
 
     start_time = time.time()
 
-    await asyncio.gather(
+    await gather(
         async_comprehension(),
         async_comprehension(),
         async_comprehension(),
