@@ -1,7 +1,7 @@
 interface Student {
-    firstName: string,
-    lastName: string,
-    age: number,
+    firstName: string
+    lastName: string
+    age: number
     location: string
 }
 
@@ -21,16 +21,18 @@ let student2: Student = {
 
 let studentsList: Array<Student> = [student1, student2]
 
-// Init
+// Setup
 let body = document.getElementsByTagName('body')[0]
 let tableContainer = document.createElement("div");
 
+// CSS
 let css = "<style> \
     table, th, td { border: 1px solid #CCC; } \
     table { border-spacing: 0; } \
     th, td { padding: 10px; } \
     </style>"
 
+// HTML Table
 let tableHtml = ""
 tableHtml = "<table>"
 tableHtml += "<thead><tr><th>Name</th><th>Location</th></tr></thead>"
@@ -39,8 +41,10 @@ tableHtml += "<tbody>"
 for (let row of studentsList) {
     tableHtml += "<tr><td>" + row.firstName + "</td><td>" + row.location + "</td></tr>"
 }
+
 tableHtml += "</tbody></table>"
 
+// Putting it all together
 tableContainer.innerHTML = css + tableHtml
 
 tableContainer.setAttribute('id', 'table-container')
