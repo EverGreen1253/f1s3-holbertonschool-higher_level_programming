@@ -8,18 +8,15 @@ export default class StudentsController {
     readDatabase(filename)
       .then((data) => {
         let outputString = '';
-        outputString += `This is the list of our students
-`;
+        outputString += 'This is the list of our students\n';
 
         let students = data.CS;
         outputString += `Number of students in CS: ${students.length}. `;
-        outputString += `List: ${students.join(', ')}
-`;
+        outputString += `List: ${students.join(', ')}\n`;
 
         students = data.SWE;
         outputString += `Number of students in SWE: ${students.length}. `;
-        outputString += `List: ${students.join(', ')}
-`;
+        outputString += `List: ${students.join(', ')}\n`;
 
         response.status(200).end(outputString);
       })
@@ -46,7 +43,7 @@ export default class StudentsController {
         let outputString = '';
 
         const students = data[major];
-        outputString += `List: ${students.toString()}\n`;
+        outputString += `List: ${students.join(', ')}\n`;
 
         response.status(200).end(outputString);
       })
