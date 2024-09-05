@@ -31,7 +31,7 @@ export default class StudentsController {
           students.push(message);
         }
 
-        response.status(200).end(`${students.join('\n')}`);
+        response.status(200).send(`${students.join('\n')}`);
       })
       .catch((error) => {
         response.status(500).end(error.message);
