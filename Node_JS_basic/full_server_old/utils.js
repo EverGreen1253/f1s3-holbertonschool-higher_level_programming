@@ -1,8 +1,10 @@
 const fs = require('fs');
 
-module.exports = async function readDatabase(filepath) {
+export default async function readDatabase(filename) {
+  const studentData = {};
+
   try {
-    const data = fs.readFileSync(filepath, 'utf-8');
+    const data = await fs.readFileSync(filename, 'utf-8');
     const rows = data.split('\n').slice(1);
 
     const studentsCS = [];
@@ -20,11 +22,13 @@ module.exports = async function readDatabase(filepath) {
       }
     }
 
-    return {
-      CS: studentsCS,
-      SWE: studentsSWE,
-    };
+    studentData.CS = studentsCS;
+    studentData.SWE = studentsSWE;
+
+    return Promise.resolve(studentData);
   } catch (error) {
-    throw new Error('Cannot load the database');
+    return Promise.reject(
+      Error(),
+    );
   }
-};
+}

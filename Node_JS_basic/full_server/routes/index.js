@@ -1,15 +1,17 @@
-import AppController from '../controllers/AppController';
-import StudentsController from '../controllers/StudentsController';
+const { default: AppController } = require('../controllers/AppController');
+const { default: StudentsController } = require('../controllers/StudentsController');
 
-const express = require('express');
+// https://stackoverflow.com/questions/6059246/how-to-include-route-handlers-in-multiple-files-in-express/37309212#37309212
+module.exports = (app) => {
+  app.get('/', (request, response) => {
+    AppController.getHomepage(request, response);
+  });
 
-const router = express.Router();
+  app.get('/students', (request, response) => {
+    StudentsController.getAllStudents(request, response);
+  });
 
-// Main route
-router.get('/', AppController.getHomepage);
-
-// Students routes
-router.get('/students', StudentsController.getAllStudents);
-router.get('/students/:major', StudentsController.getAllStudentsByMajor);
-
-module.exports = router;
+  app.get('/students/:major', (request, response) => {
+    StudentsController.getAllStudentsByMajor(request, response);
+  });
+};
