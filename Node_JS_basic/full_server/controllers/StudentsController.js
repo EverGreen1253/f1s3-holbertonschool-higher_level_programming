@@ -1,54 +1,39 @@
-const readDatabase = require('../utils');
+import readDatabase from '../utils';
 
-export default class StudentsController {
-  static getAllStudents(request, response) {
-    const filename = process.argv[process.argv.length - 1];
-    // console.log(filename);
+export default class StudentController {
+  static getAllStudents(request, response, db) {
+    readDatabase(db)
+      .then((fields) => {
+        const students = [];
+        let message;
+        students.push('This is the list of our students');
 
-    readDatabase(filename)
-      .then((data) => {
-        let outputString = '';
-        outputString += 'This is the list of our students\n';
+        for (const key of Object.keys(fields)) {
+          message = `Number of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}`;
+          students.push(message);
+        }
 
-        let students = data.CS;
-        outputString += `Number of students in CS: ${students.length}. `;
-        outputString += `List: ${students.join(', ')}\n`;
-
-        students = data.SWE;
-        outputString += `Number of students in SWE: ${students.length}. `;
-        outputString += `List: ${students.join(', ')}\n`;
-
-        response.status(200).end(outputString);
+        response.status(200).send(`${students.join('\n')}`);
       })
-      .catch((error) => {
-        response.status(500).end(error.message);
+
+      .catch(() => {
+        response.status(500).send('Cannot load the database');
       });
   }
 
-  static getAllStudentsByMajor(request, response) {
-    // let major = request.params.major
+  static getAllStudentsByMajor(request, response, db) {
+    if (request.params.major !== 'CS' && request.params.major !== 'SWE') {
+      response.status(500).send('Major parameter must be CS or SWE');
+    } else {
+      readDatabase(db)
+        .then((fields) => {
+          const major = fields[request.params.major];
 
-    // https://stackoverflow.com/questions/47395070/how-to-fix-eslint-error-prefer-destructuring
-    const { major } = request.params; // follows eslint destructuring recommendation
-
-    if (major !== 'CS' && major !== 'SWE') {
-      response.status(500).end('Major parameter must be CS or SWE');
+          response.status(200).send(`List: ${major.join(', ')}`);
+        })
+        .catch(() => {
+          response.status(500).send('Cannot load the database');
+        });
     }
-
-    const filename = process.argv[process.argv.length - 1];
-    // console.log(filename);
-
-    readDatabase(filename)
-      .then((data) => {
-        let outputString = '';
-
-        const students = data[major];
-        outputString += `List: ${students.join(', ')}\n`;
-
-        response.status(200).end(outputString);
-      })
-      .catch((error) => {
-        response.status(500).end(error.message);
-      });
   }
 }
