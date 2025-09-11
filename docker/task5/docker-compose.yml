@@ -11,7 +11,7 @@ services:
     networks:
       - private
   front-end:
-    image: "nginx:1.2.6"
+    image: "nginx:1.26"
     environment:
       IS_DOCKER_CONTAINER: 1
     build:
